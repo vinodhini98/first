@@ -1,0 +1,90 @@
+java -jar "C:\Program Files\Jenkins\Jenkins.war" --enable-future-java
+
+
+sudo apt-get install default-jdk  (openjdk-11-jre-headless)
+
+
+sudo apt update
+sudo apt upgrade
+
+sudo apt install openjdk-11-jre-headless
+
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add
+
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian binary/ > \
+/etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+sudo apt-get install jenkins
+
+sudo apt-get install docker.io
+
+
+https://mirrors.estointernet.in/apache/maven/maven-3/3.8.5/binaries/apache-maven-3.8.5-bin.tar.gz
+
+docker run  --name  mydb  -d     -e   MYSQL_ROOT_PASSWORD=vino  mysql:5
+
+docker run --name c1 -itd httpd
+
+docker run --name c1 -itd -p 81:80 httpd
+
+ docker run --name devserver -itd -P jenkins/jenkins
+
+Install docker ompose (Open https://docs.docker.com/compose/install/)
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+docker-compose  --version
+
+docker rm -f $(docker ps -aq) ---> to remove all running container
+
+
+version: '3'
+
+services:
+ mydb:
+  image: mysql:5
+  environment:
+   MYSQL_ROOT_PASSWORD: sunilsunil
+
+ mysite:
+  image: wordpress
+  ports:
+   - 5050:80
+  links:
+   - mydb:mysql
+
+/var/lib/docker/volumes/faa2104265d59dcf5f31d5f7bb64b4587d4dd73bea8a9b91fee4754831a54616/_data"
+
+
+for stating prometheus file
+“./prometheus --config.file=prometheus.yml”
+
+node exporter - https://github.com/prometheus/node_exporter/releases/download/v1.3.1/node_exporter-1.3.1.linux-amd64.tar.gz
+
+Prometheus- https://github.com/prometheus/prometheus/releases/download/v2.35.0/prometheus-2.35.0.linux-amd64.tar.gz
+
+to start node exporter ./node_exporter 
+
+
+chmod +x script-name-here.sh -->permission for shell script
+
+delete --> git rebase -i HEAD~5 (Squash)
+
+
+
+wwwterraform.io/downlods.html
+
+
+
+Kubernetes ----> Cluster - Comination of 1 master and multiple nodes.
+Pod --->one or more docker container --- runs on node 
+
+Master:
+kube api (it receives yaml file and pass the request to)
+ |>kube scheduler (will create pods and containers)
+ |etcd(contains information about cluster it stores the data of master,node,containers)
+ |controller manager(make sure that actual = desire state)
+ |
+Node:
+kubelet(listenes to kubernets master)
